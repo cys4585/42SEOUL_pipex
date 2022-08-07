@@ -6,7 +6,7 @@
 #    By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 18:43:07 by youngcho          #+#    #+#              #
-#    Updated: 2022/08/07 19:03:28 by youngcho         ###   ########.fr        #
+#    Updated: 2022/08/07 19:15:20 by youngcho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 INCS_FLAGS = -I $(INCS_DIR)
 
-SRCS_NAME = main.c
+SRCS_NAME = main.c \
+			set_args.c
+			
 OBJS_NAME = $(SRCS_NAME:.c=.o)
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NAME))
@@ -36,7 +38,7 @@ re : fclean
 	make all
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $^ -o $@
 
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c | $(OBJS_DIR)
 	$(CC) $(CFLAGS) $(INCS_FLAGS) -c $< -o $@
