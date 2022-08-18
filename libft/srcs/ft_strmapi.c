@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/07 19:19:43 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/18 16:05:44 by youngcho         ###   ########.fr       */
+/*   Created: 2022/03/26 13:55:45 by youngcho          #+#    #+#             */
+/*   Updated: 2022/05/18 19:34:48 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#include <stdlib.h>
+#include "libft.h"
 
-# include <stdio.h>
-// perror
-# include <stdlib.h>
-// exit
-# include <unistd.h>
-// write
-
-typedef enum e_error
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	CUS_REQ_ARG,
-	ACCESS,
-	OPEN,
-	DUP,
-	PIPE,
-	FORK
-}	t_error;
+	char	*dst;
+	int		i;
 
-void	exit_with_perror(char *str);
-void	check_error(t_error err, char *str, int ret);
-
-#endif
+	if (s == NULL || f == NULL)
+		return (NULL);
+	dst = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (dst == NULL)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		dst[i] = f((unsigned int)i, s[i]);
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}

@@ -6,7 +6,7 @@
 #    By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 18:43:07 by youngcho          #+#    #+#              #
-#    Updated: 2022/08/07 19:15:20 by youngcho         ###   ########.fr        #
+#    Updated: 2022/08/18 16:35:10 by youngcho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,18 @@ SRCS_DIR = ./srcs/
 OBJS_DIR = ./objs/
 INCS_DIR = ./incs/
 
+LIBFT_DIR = ./libft/
+LIBFT_NAME = libft.a
+LIBFT = $(LIBFT_DIR)$(LIBFT_NAME)
+LIBFT_FLAGS = -L$(LIBFT_DIR) -lft
+
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-INCS_FLAGS = -I $(INCS_DIR)
+INCS_FLAGS = -I $(INCS_DIR) -I $(LIBFT_DIR)incs/
 
 SRCS_NAME = main.c \
-			set_args.c
+			set_args.c \
+			error.c
 			
 OBJS_NAME = $(SRCS_NAME:.c=.o)
 
@@ -31,15 +37,20 @@ OBJS = $(addprefix $(OBJS_DIR), $(OBJS_NAME))
 .PHONY: all clean fclean re
 all: $(NAME)
 clean :
+	make clean -C $(LIBFT_DIR)
 	rm -rf $(OBJS_DIR)
 fclean : clean
+	make fclean -C $(LIBFT_DIR)
 	rm -f $(NAME)
 re : fclean
 	make all
 
-$(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
+$(NAME) : $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(LIBFT_FLAGS) $(OBJS) -o $@
 
+$(LIBFT) :
+	make all -C $(LIBFT_DIR)
+	
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c | $(OBJS_DIR)
 	$(CC) $(CFLAGS) $(INCS_FLAGS) -c $< -o $@
 

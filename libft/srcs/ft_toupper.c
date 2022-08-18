@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/07 19:19:43 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/18 16:05:44 by youngcho         ###   ########.fr       */
+/*   Created: 2022/03/22 12:58:04 by youngcho          #+#    #+#             */
+/*   Updated: 2022/05/18 16:53:11 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
-
-# include <stdio.h>
-// perror
-# include <stdlib.h>
-// exit
-# include <unistd.h>
-// write
-
-typedef enum e_error
+int	ft_toupper(int c)
 {
-	CUS_REQ_ARG,
-	ACCESS,
-	OPEN,
-	DUP,
-	PIPE,
-	FORK
-}	t_error;
-
-void	exit_with_perror(char *str);
-void	check_error(t_error err, char *str, int ret);
-
-#endif
+	if ('a' <= c && c <= 'z')
+		return (c - ('a' - 'A'));
+	return (c);
+}
