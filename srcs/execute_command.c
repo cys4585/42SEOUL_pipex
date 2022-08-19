@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:59:52 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/19 15:52:47 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/19 16:44:24 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static char	*get_bin_path(char *envp[], char *file_name)
 	return (bin_path);
 }
 
-void	exec_cmd(char *cmd, char *envp[])
+static void	exec_cmd(char *cmd, char *envp[])
 {
 	char	*bin_path;
 	char	**argv;
@@ -72,4 +72,40 @@ void	exec_cmd(char *cmd, char *envp[])
 	bin_path = get_bin_path(envp, argv[0]);
 	check_custom_error(CUS_NO_BIN, "exec_cmd(): No bin file.\n", bin_path);
 	check_error(EXECVE, "execve(): ", execve(bin_path, argv, envp));
+}
+
+void	execute_first_cmd(char *cmd, char *envp[])
+{
+	int		pipefd[2];
+	pid_t	child;
+
+	check_error(PIPE, "pipe", pipe(pipefd));
+	child = fork();
+	check_error(FORK, "first fork", child);
+	if (child > 0)
+	{
+		close(pipefd[1]);
+		waitpid(child, NULL, 0);
+		dup2(pipefd[0], STDIN_FILENO);
+		close(pipefd[0]);
+	}
+	else
+	{
+		close(pipefd[0]);
+		dup2(pipefd[1], STDOUT_FILENO);
+		close(pipefd[1]);
+		exec_cmd(cmd, envp);
+	}
+}
+
+void	execute_second_cmd(char *cmd, char *envp[])
+{
+	pid_t	child;
+
+	child = fork();
+	check_error(FORK, "second fork", child);
+	if (child > 0)
+		waitpid(child, NULL, 0);
+	else
+		exec_cmd(cmd, envp);
 }
