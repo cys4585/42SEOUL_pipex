@@ -6,23 +6,35 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:20:15 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/18 16:22:53 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:50:57 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "error.h"
 #include "libft.h"
 
-void	exit_with_perror(char *str)
+static void	exit_with_perror(char *str)
 {
 	perror(str);
 	exit(EXIT_FAILURE);
 }
 
-void	exit_with_custom_perror(char *str)
+static void	exit_with_custom_perror(char *str)
 {
 	write(STDERR_FILENO, str , ft_strlen(str));
 	exit(EXIT_FAILURE);
+}
+
+void	check_error_pointer(t_error err, char *str, void *ret)
+{
+	if (err == CUS_SPLIT && ret == NULL)
+		exit_with_custom_perror(str);
+	if (err == CUS_NO_PATH && ret == NULL)
+		exit_with_custom_perror(str);
+	if (err == CUS_JOIN && ret == NULL)
+		exit_with_custom_perror(str);
+	if (err == CUS_NO_BIN && ret == NULL)
+		exit_with_custom_perror(str);	
 }
 
 void	check_error(t_error err, char *str, int ret)

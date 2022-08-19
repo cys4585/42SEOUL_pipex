@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:19:43 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/18 16:05:44 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:50:42 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 typedef enum e_error
 {
 	CUS_REQ_ARG,
+	CUS_SPLIT,
+	CUS_NO_PATH,
+	CUS_JOIN,
+	CUS_NO_BIN,
 	ACCESS,
 	OPEN,
 	DUP,
@@ -30,7 +34,7 @@ typedef enum e_error
 	FORK
 }	t_error;
 
-void	exit_with_perror(char *str);
+void	check_error_pointer(t_error err, char *str, void *ret);
 void	check_error(t_error err, char *str, int ret);
 
 #endif

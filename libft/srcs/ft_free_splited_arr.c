@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_free_splited_arr.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/07 18:49:21 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/18 16:43:42 by youngcho         ###   ########.fr       */
+/*   Created: 2022/08/19 12:35:46 by youngcho          #+#    #+#             */
+/*   Updated: 2022/08/19 12:56:13 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
-
-#include <unistd.h>
-// pipe fork close 
-// STDIN_FILENO STDOUT_FILENO
+#include "libft.h"
 #include <stdlib.h>
-// exit
-#include <fcntl.h>
-// open
 
-#endif
+void	ft_free_splited_arr(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
+}

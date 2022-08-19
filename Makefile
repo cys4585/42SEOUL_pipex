@@ -6,7 +6,7 @@
 #    By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 18:43:07 by youngcho          #+#    #+#              #
-#    Updated: 2022/08/18 16:35:10 by youngcho         ###   ########.fr        #
+#    Updated: 2022/08/19 11:05:51 by youngcho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,10 @@ LIBFT = $(LIBFT_DIR)$(LIBFT_NAME)
 LIBFT_FLAGS = -L$(LIBFT_DIR) -lft
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 INCS_FLAGS = -I $(INCS_DIR) -I $(LIBFT_DIR)incs/
 
 SRCS_NAME = main.c \
-			set_args.c \
 			error.c
 			
 OBJS_NAME = $(SRCS_NAME:.c=.o)
