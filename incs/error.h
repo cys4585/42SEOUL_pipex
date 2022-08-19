@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:19:43 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/19 12:50:42 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/19 15:27:35 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,11 @@ typedef enum e_error
 	OPEN,
 	DUP,
 	PIPE,
-	FORK
+	FORK,
+	EXECVE
 }	t_error;
 
-void	check_error_pointer(t_error err, char *str, void *ret);
+void	check_custom_error(t_error err, char *str, void *ret);
 void	check_error(t_error err, char *str, int ret);
 
 #endif

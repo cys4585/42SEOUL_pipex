@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 13:08:18 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/19 13:14:50 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/19 14:45:35 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <fcntl.h>
 // open
 
+void	redirect_stdin_to_infile(char *infile, int *fd_infile_p);
+void	redirect_stdout_to_outfile(char *outfile, int *fd_outfile_p);
 void	redirect_stream(int argc, char *argv[], int *fd_infile_p, int *fd_outfile_p);
 
 #endif

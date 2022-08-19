@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:20:15 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/19 12:50:57 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/19 15:28:46 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ static void	exit_with_custom_perror(char *str)
 	exit(EXIT_FAILURE);
 }
 
-void	check_error_pointer(t_error err, char *str, void *ret)
+void	check_custom_error(t_error err, char *str, void *ret)
 {
+	if (err == CUS_REQ_ARG && *(int *)ret != 5)
+		exit_with_custom_perror(str);
 	if (err == CUS_SPLIT && ret == NULL)
 		exit_with_custom_perror(str);
 	if (err == CUS_NO_PATH && ret == NULL)
@@ -39,8 +41,6 @@ void	check_error_pointer(t_error err, char *str, void *ret)
 
 void	check_error(t_error err, char *str, int ret)
 {
-	if (err == CUS_REQ_ARG && ret != 5)
-		exit_with_custom_perror(str);
 	if (err == PIPE && ret == -1)
 		exit_with_perror(str);
 	if (err == FORK && ret == -1)
@@ -50,5 +50,7 @@ void	check_error(t_error err, char *str, int ret)
 	if (err == OPEN && ret == -1)
 		exit_with_perror(str);
 	if (err == DUP && ret == -1)
+		exit_with_perror(str);
+	if (err == EXECVE && ret == -1)
 		exit_with_perror(str);
 }

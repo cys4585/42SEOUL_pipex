@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:59:52 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/19 13:04:34 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/19 15:28:23 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ static char	**get_dir_name_arr(char *envp[])
 		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
 		{
 			dir_name_arr = ft_split(envp[i] + 5, ':');
-			check_error_pointer(CUS_SPLIT, "get_envp(): Split failed.\n", dir_name_arr);
+			check_custom_error(CUS_SPLIT, "Split failed.\n", dir_name_arr);
 			break ;
 		}
 		i++;
 	}
-	check_error_pointer(CUS_NO_PATH, "get_envp(): No 'PATH=' in envp.\n", dir_name_arr);
+	check_custom_error(CUS_NO_PATH, "No 'PATH=' in envp.\n", dir_name_arr);
 	return (dir_name_arr);
 }
 
@@ -48,9 +48,9 @@ static char	*get_bin_path(char *envp[], char *file_name)
 	while (dir_name_arr[i])
 	{
 		tmp = ft_strjoin(dir_name_arr[i], "/");
-		check_error_pointer(CUS_JOIN, "get_bin_path(): Join failed.\n", tmp);
+		check_custom_error(CUS_JOIN, "Join failed.\n", tmp);
 		bin_path = ft_strjoin(tmp, file_name);
-		check_error_pointer(CUS_JOIN, "get_bin_path(): Join failed.\n", bin_path);
+		check_custom_error(CUS_JOIN, "Join failed.\n", bin_path);
 		free(tmp);
 		if (access(bin_path, X_OK) == 0)
 			break ;
@@ -69,9 +69,9 @@ void	exec_cmd(char *cmd, char *envp[])
 
 	// free 해야함
 	argv = ft_split(cmd, ' ');
-	check_error_pointer(CUS_SPLIT, "exec_cmd(): Split failed.\n", argv);
+	check_custom_error(CUS_SPLIT, "exec_cmd(): Split failed.\n", argv);
 	// free 해야함
 	bin_path = get_bin_path(envp, argv[0]);
-	check_error_pointer(CUS_NO_BIN, "exec_cmd(): No bin file.\n", bin_path);
-	execve(bin_path, argv, envp);
+	check_custom_error(CUS_NO_BIN, "exec_cmd(): No bin file.\n", bin_path);
+	check_error(EXECVE, "execve(): ", execve(bin_path, argv, envp));
 }
