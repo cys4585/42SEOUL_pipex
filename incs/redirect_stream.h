@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   redirect_stream.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/07 18:49:21 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/19 13:10:18 by youngcho         ###   ########.fr       */
+/*   Created: 2022/08/19 13:08:18 by youngcho          #+#    #+#             */
+/*   Updated: 2022/08/19 13:14:50 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef REDIRECT_STREAM_H
+# define REDIRECT_STREAM_H
 
 #include <unistd.h>
-// pipe fork close access
-// STDIN_FILENO STDOUT_FILENO
-#include <stdlib.h>
-// exit
+// access dup2
 #include <fcntl.h>
 // open
+
+void	redirect_stream(int argc, char *argv[], int *fd_infile_p, int *fd_outfile_p);
 
 #endif

@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   execute_command.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/07 18:49:21 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/19 13:10:18 by youngcho         ###   ########.fr       */
+/*   Created: 2022/08/19 13:00:42 by youngcho          #+#    #+#             */
+/*   Updated: 2022/08/19 13:14:47 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef EXECUTE_COMMAND_H
+# define EXECUTE_COMMAND_H
 
 #include <unistd.h>
-// pipe fork close access
-// STDIN_FILENO STDOUT_FILENO
+// execve access
 #include <stdlib.h>
-// exit
-#include <fcntl.h>
-// open
+// free
+
+void	exec_cmd(char *cmd, char *envp[]);
 
 #endif
