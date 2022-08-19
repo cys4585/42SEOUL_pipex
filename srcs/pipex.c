@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 18:44:13 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/19 15:26:53 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/19 15:35:33 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	execute_first_cmd(char *cmd, char *envp[])
 {
 	int		pipefd[2];
 	pid_t	child;
-	
+
 	check_error(PIPE, "pipe", pipe(pipefd));
 	child = fork();
 	check_error(FORK, "first fork", child);
@@ -47,7 +47,7 @@ void	execute_first_cmd(char *cmd, char *envp[])
 void	execute_second_cmd(char *cmd, char *envp[])
 {
 	pid_t	child;
-	
+
 	child = fork();
 	check_error(FORK, "second fork", child);
 	if (child > 0)

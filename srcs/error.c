@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:20:15 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/19 15:28:46 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/19 15:34:36 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	exit_with_perror(char *str)
 
 static void	exit_with_custom_perror(char *str)
 {
-	write(STDERR_FILENO, str , ft_strlen(str));
+	write(STDERR_FILENO, str, ft_strlen(str));
 	exit(EXIT_FAILURE);
 }
 
@@ -36,7 +36,7 @@ void	check_custom_error(t_error err, char *str, void *ret)
 	if (err == CUS_JOIN && ret == NULL)
 		exit_with_custom_perror(str);
 	if (err == CUS_NO_BIN && ret == NULL)
-		exit_with_custom_perror(str);	
+		exit_with_custom_perror(str);
 }
 
 void	check_error(t_error err, char *str, int ret)

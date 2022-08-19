@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:59:52 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/19 15:28:23 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/19 15:35:05 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	**get_dir_name_arr(char *envp[])
 {
 	char	**dir_name_arr;
 	int		i;
-	
+
 	dir_name_arr = NULL;
 	i = 0;
 	while (envp[i])
@@ -41,7 +41,7 @@ static char	*get_bin_path(char *envp[], char *file_name)
 	char	*tmp;
 	char	*bin_path;
 	int		i;
-	
+
 	bin_path = NULL;
 	dir_name_arr = get_dir_name_arr(envp);
 	i = 0;
