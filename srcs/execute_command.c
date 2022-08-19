@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:59:52 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/19 15:35:05 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/19 15:52:47 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,8 @@ void	exec_cmd(char *cmd, char *envp[])
 	char	*bin_path;
 	char	**argv;
 
-	// free 해야함
 	argv = ft_split(cmd, ' ');
 	check_custom_error(CUS_SPLIT, "exec_cmd(): Split failed.\n", argv);
-	// free 해야함
 	bin_path = get_bin_path(envp, argv[0]);
 	check_custom_error(CUS_NO_BIN, "exec_cmd(): No bin file.\n", bin_path);
 	check_error(EXECVE, "execve(): ", execve(bin_path, argv, envp));
