@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:20:15 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/20 11:40:15 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/20 13:48:07 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	exit_with_custom_perror(char *str)
 
 void	check_custom_error(t_error err, char *str, void *ret)
 {
-	if (err == CUS_REQ_ARG && *(int *)ret != 5)
+	if (err == CUS_ARGC && *(int *)ret != 5)
 		exit_with_custom_perror(str);
 	if (err == CUS_SPLIT && ret == NULL)
 		exit_with_custom_perror(str);

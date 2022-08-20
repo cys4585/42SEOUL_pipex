@@ -6,7 +6,7 @@
 #    By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/01 17:37:39 by youngcho          #+#    #+#              #
-#    Updated: 2022/08/19 12:56:30 by youngcho         ###   ########.fr        #
+#    Updated: 2022/08/20 14:22:07 by youngcho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,9 @@ SRCS_NAME = ft_atoi.c \
 		ft_substr.c \
 		ft_tolower.c \
 		ft_toupper.c \
-		ft_free_splited_arr.c
+		ft_free_splited_arr.c \
+		get_next_line.c \
+		get_next_line_utils.c
 
 SRCS = $(addprefix $(SRC_DIR), $(SRCS_NAME))
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS_NAME:.c=.o))

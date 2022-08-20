@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute_command.h                                  :+:      :+:    :+:   */
+/*   heredoc_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 13:00:42 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/20 13:18:23 by youngcho         ###   ########.fr       */
+/*   Created: 2022/08/20 15:05:51 by youngcho          #+#    #+#             */
+/*   Updated: 2022/08/20 15:57:57 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTE_COMMAND_H
-# define EXECUTE_COMMAND_H
+#ifndef HEREDOC_BONUS_H
+# define HEREDOC_BONUS_H
 
 # include <unistd.h>
-# include <stdlib.h>
+# include <fcntl.h>
 
-void	execute_cmd_and_pass_output(char *cmd, char *envp[]);
-void	execute_last_cmd(char *cmd, char *envp[]);
+void	heredoc(char *limiter, int pipe_cnt);
+int		check_heredoc_mode(char *first_arg);
 
 #endif

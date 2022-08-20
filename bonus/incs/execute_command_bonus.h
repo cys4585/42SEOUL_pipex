@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   execute_command_bonus.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/07 19:19:43 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/19 15:36:30 by youngcho         ###   ########.fr       */
+/*   Created: 2022/08/19 13:00:42 by youngcho          #+#    #+#             */
+/*   Updated: 2022/08/20 15:10:21 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef EXECUTE_COMMAND_BONUS_H
+# define EXECUTE_COMMAND_BONUS_H
 
-# include <stdio.h>
-# include <stdlib.h>
 # include <unistd.h>
+# include <stdlib.h>
 
-typedef enum e_error
-{
-	CUS_REQ_ARG,
-	CUS_SPLIT,
-	CUS_NO_PATH,
-	CUS_JOIN,
-	CUS_NO_BIN,
-	ACCESS,
-	OPEN,
-	DUP,
-	PIPE,
-	FORK,
-	EXECVE
-}	t_error;
-
-void	check_custom_error(t_error err, char *str, void *ret);
-void	check_error(t_error err, char *str, int ret);
+void	execute_cmd_and_pass_output(char *cmd, char *envp[]);
+void	execute_last_cmd(char *cmd, char *envp[]);
 
 #endif

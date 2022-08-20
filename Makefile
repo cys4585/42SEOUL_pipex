@@ -6,7 +6,7 @@
 #    By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 18:43:07 by youngcho          #+#    #+#              #
-#    Updated: 2022/08/20 13:07:52 by youngcho         ###   ########.fr        #
+#    Updated: 2022/08/20 15:11:44 by youngcho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,11 @@ LIBFT_FLAGS = -L$(LIBFT_DIR) -lft
 
 ifeq ($(findstring bonus, $(MAKECMDGOALS)), bonus)
 	PART = bonus/
-	SRCS_NAME = pipex.c \
-			redirect.c \
-			execute_command.c \
-			error.c
+	SRCS_NAME = pipex_bonus.c \
+			redirect_bonus.c \
+			execute_command_bonus.c \
+			error_bonus.c \
+			heredoc_bonus.c
 else
 	PART = mandatory/
 	SRCS_NAME = pipex.c \

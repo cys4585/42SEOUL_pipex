@@ -1,22 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirect.h                                         :+:      :+:    :+:   */
+/*   error_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 13:08:18 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/20 11:36:04 by youngcho         ###   ########.fr       */
+/*   Created: 2022/08/07 19:19:43 by youngcho          #+#    #+#             */
+/*   Updated: 2022/08/20 16:47:51 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef REDIRECT_H
-# define REDIRECT_H
+#ifndef ERROR_BONUS_H
+# define ERROR_BONUS_H
 
+# include <stdio.h>
+# include <stdlib.h>
 # include <unistd.h>
-# include <fcntl.h>
 
-void	redirect(char *infile, char *outfile, \
-						int *fd_infile_p, int *fd_outfile_p);
+typedef enum e_error
+{
+	CUS_ARGC,
+	CUS_HEREDOC_ARGC,
+	CUS_SPLIT,
+	CUS_NO_PATH,
+	CUS_JOIN,
+	CUS_NO_BIN,
+	ACCESS,
+	OPEN,
+	DUP,
+	PIPE,
+	FORK,
+	EXECVE,
+	OPEN_HEREDOC,
+	UNLINK
+}	t_error;
+
+void	check_custom_error(t_error err, char *str, void *ret);
+void	check_error(t_error err, char *str, int ret);
 
 #endif

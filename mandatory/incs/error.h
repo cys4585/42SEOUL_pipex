@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:19:43 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/19 15:36:30 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/20 13:48:07 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef enum e_error
 {
-	CUS_REQ_ARG,
+	CUS_ARGC,
 	CUS_SPLIT,
 	CUS_NO_PATH,
 	CUS_JOIN,
