@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:59:52 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/19 16:44:24 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/20 11:29:57 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	execute_first_cmd(char *cmd, char *envp[])
 	}
 }
 
-void	execute_second_cmd(char *cmd, char *envp[])
+void	execute_last_cmd(char *cmd, char *envp[])
 {
 	pid_t	child;
 

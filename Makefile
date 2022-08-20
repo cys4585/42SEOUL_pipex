@@ -6,7 +6,7 @@
 #    By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/07 18:43:07 by youngcho          #+#    #+#              #
-#    Updated: 2022/08/19 13:13:48 by youngcho         ###   ########.fr        #
+#    Updated: 2022/08/20 11:35:49 by youngcho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ CFLAGS = -Wall -Werror -Wextra -g
 INCS_FLAGS = -I $(INCS_DIR) -I $(LIBFT_DIR)incs/
 
 SRCS_NAME = pipex.c \
-			redirect_stream.c \
+			redirect.c \
 			execute_command.c \
 			error.c
 			
