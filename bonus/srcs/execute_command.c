@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:59:52 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/20 11:29:57 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/20 13:23:51 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ static void	exec_cmd(char *cmd, char *envp[])
 	check_error(EXECVE, "execve(): ", execve(bin_path, argv, envp));
 }
 
-void	execute_first_cmd(char *cmd, char *envp[])
+void	execute_cmd_and_pass_output(char *cmd, char *envp[])
 {
 	int		pipefd[2];
 	pid_t	child;
 
 	check_error(PIPE, "pipe", pipe(pipefd));
 	child = fork();
-	check_error(FORK, "first fork", child);
+	check_error(FORK, "fork", child);
 	if (child > 0)
 	{
 		close(pipefd[1]);
@@ -103,7 +103,7 @@ void	execute_last_cmd(char *cmd, char *envp[])
 	pid_t	child;
 
 	child = fork();
-	check_error(FORK, "second fork", child);
+	check_error(FORK, "last fork", child);
 	if (child > 0)
 		waitpid(child, NULL, 0);
 	else
